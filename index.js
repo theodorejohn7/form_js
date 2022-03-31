@@ -41,11 +41,11 @@ const equalCheck = (check_1, check_2, id, error) => {
     if (check_1 !== check_2) {
         id.style.display = "inline";
         id.innerText = error;
-
+        return 1;
     } else if (check_1 === check_2) {
         id.style.display = "none";
         id.innerText = "";
-
+        return 0;
     }
 
 }
@@ -78,13 +78,16 @@ function validate() {
 
 
 
-
+    // let a = 0;
     //check for @ in email
     emailCheck(email, email_error, "Enter a valid e-Mail address with @ symbol");
 
     //password equality check
     equalCheck(inputPassword_1, inputPassword_2, inputPassword_1_error, "Password mismatch");
+    // console.log("a= " + equalCheck.value);
+    // if (a > 0) {
+    //     document.getElementById("validate_btn").style.background = "red";
 
-
+    // }
 
 }

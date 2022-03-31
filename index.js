@@ -9,6 +9,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
     displayNull(country_error);
     displayNull(state_error);
     displayNull(pincode_error);
+    displayNull(submit_btn);
+
 });
 
 const displayNull = param => param.style.display = "none";
@@ -18,9 +20,11 @@ const nullCheck = (tocheck, id, error) => {
         id.style.display = "inline";
         // document.getElementById("first_name_error").innerText = error;
         id.innerText = error;
+        return 1;
 
     } else {
         id.style.display = "none";
+        return 0;
     }
 
 }
@@ -33,8 +37,10 @@ const emailCheck = (toCheck, id, error) => {
         id.style.display = "inline";
 
         id.innerText = error;
+        return 1;
     } else {
         id.style.display = "none";
+        return 0;
     }
 
 }
@@ -69,29 +75,37 @@ function validate() {
     let pincode = document.getElementById("pincode").value;
 
     //validating and displaying error message
-    nullCheck(first_name, first_name_error, "Kindly enter First Name");
-    nullCheck(last_name, last_name_error, "Kindly enter Last Name");
-    nullCheck(username, username_error, "Kindly enter Username");
-    nullCheck(email, email_error, "Kindly enter e-Mail address");
-    nullCheck(inputPassword_1, inputPassword_1_error, "Kindly enter Password");
-    nullCheck(inputPassword_2, inputPassword_2_error, "Kindly enter Re-Password");
-    nullCheck(address_1, address_1_error, "Kindly enter Address");
-    nullCheck(country, country_error, "Kindly select a Country");
-    nullCheck(state, state_error, "Kindly select a State");
-    nullCheck(pincode, pincode_error, "Kindly Enter a Pincode");
+    b = nullCheck(first_name, first_name_error, "Kindly enter First Name");
+    b = nullCheck(last_name, last_name_error, "Kindly enter Last Name");
+    b = nullCheck(username, username_error, "Kindly enter Username");
+    b = nullCheck(email, email_error, "Kindly enter e-Mail address");
+    b = nullCheck(inputPassword_1, inputPassword_1_error, "Kindly enter Password");
+    b = nullCheck(inputPassword_2, inputPassword_2_error, "Kindly enter Re-Password");
+    b = nullCheck(address_1, address_1_error, "Kindly enter Address");
+    b = nullCheck(country, country_error, "Kindly select a Country");
+    b = nullCheck(state, state_error, "Kindly select a State");
+    b = nullCheck(pincode, pincode_error, "Kindly Enter a Pincode");
 
 
 
     // let a = 0;
     //check for @ in email
-    emailCheck(email, email_error, "Enter a valid e-Mail address with @ symbol");
+    a = emailCheck(email, email_error, "Enter a valid e-Mail address with @ symbol");
 
     //password equality check
-    equalCheck(inputPassword_1, inputPassword_2, inputPassword_1_error, "Password mismatch");
+    c = equalCheck(inputPassword_1, inputPassword_2, inputPassword_1_error, "Password mismatch");
+    console.log(a);
     // console.log("a= " + equalCheck.value);
-    // if (a > 0) {
-    //     document.getElementById("validate_btn").style.background = "red";
+    if ((a > 0) | (b > 0) | (c > 0)) {
+        document.getElementById("validate_btn").style.background = "red";
 
-    // }
+    } else {
+        document.getElementById("validate_btn").style.background = "blue";
+
+        document.getElementById("submit_btn").style.display = "inline";
+
+
+
+    }
 
 }

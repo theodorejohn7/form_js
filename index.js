@@ -19,6 +19,8 @@ const nullCheck = (tocheck, id, error) => {
         // document.getElementById("first_name_error").innerText = error;
         id.innerText = error;
 
+    } else {
+        id.style.display = "none";
     }
 
 }
@@ -31,6 +33,8 @@ const emailCheck = (toCheck, id, error) => {
         id.style.display = "inline";
 
         id.innerText = error;
+    } else {
+        id.style.display = "none";
     }
 
 }
